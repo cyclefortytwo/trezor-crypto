@@ -3196,6 +3196,7 @@ static void test_codepoints_curve(const ecdsa_curve *curve) {
 }
 
 START_TEST(test_codepoints_secp256k1) { test_codepoints_curve(&secp256k1); } END_TEST
+START_TEST(test_codepoints_secp256k1_h) { test_codepoints_curve(&secp256k1_h); } END_TEST
 START_TEST(test_codepoints_nist256p1) { test_codepoints_curve(&nist256p1); } END_TEST
 
 static void test_mult_border_cases_curve(const ecdsa_curve *curve) {
@@ -3244,6 +3245,7 @@ static void test_mult_border_cases_curve(const ecdsa_curve *curve) {
 }
 
 START_TEST(test_mult_border_cases_secp256k1) { test_mult_border_cases_curve(&secp256k1); } END_TEST
+START_TEST(test_mult_border_cases_secp256k1_h) { test_mult_border_cases_curve(&secp256k1_h); } END_TEST
 START_TEST(test_mult_border_cases_nist256p1) { test_mult_border_cases_curve(&nist256p1); } END_TEST
 
 static void test_scalar_mult_curve(const ecdsa_curve *curve) {
@@ -3270,6 +3272,7 @@ static void test_scalar_mult_curve(const ecdsa_curve *curve) {
 }
 
 START_TEST(test_scalar_mult_secp256k1) { test_scalar_mult_curve(&secp256k1); } END_TEST
+START_TEST(test_scalar_mult_secp256k1_h) { test_scalar_mult_curve(&secp256k1_h); } END_TEST
 START_TEST(test_scalar_mult_nist256p1) { test_scalar_mult_curve(&nist256p1); } END_TEST
 
 static void test_point_mult_curve(const ecdsa_curve *curve) {
@@ -3298,6 +3301,7 @@ static void test_point_mult_curve(const ecdsa_curve *curve) {
 }
 
 START_TEST(test_point_mult_secp256k1) { test_point_mult_curve(&secp256k1); } END_TEST
+START_TEST(test_point_mult_secp256k1_h) { test_point_mult_curve(&secp256k1_h); } END_TEST
 START_TEST(test_point_mult_nist256p1) { test_point_mult_curve(&nist256p1); } END_TEST
 
 static void test_scalar_point_mult_curve(const ecdsa_curve *curve) {
@@ -3333,6 +3337,7 @@ static void test_scalar_point_mult_curve(const ecdsa_curve *curve) {
 }
 
 START_TEST(test_scalar_point_mult_secp256k1) { test_scalar_point_mult_curve(&secp256k1); } END_TEST
+START_TEST(test_scalar_point_mult_secp256k1_h) { test_scalar_point_mult_curve(&secp256k1_h); } END_TEST
 START_TEST(test_scalar_point_mult_nist256p1) { test_scalar_point_mult_curve(&nist256p1); } END_TEST
 
 START_TEST(test_ed25519) {
@@ -4971,26 +4976,31 @@ Suite *test_suite(void)
 
 	tc = tcase_create("codepoints");
 	tcase_add_test(tc, test_codepoints_secp256k1);
+	tcase_add_test(tc, test_codepoints_secp256k1_h);
 	tcase_add_test(tc, test_codepoints_nist256p1);
 	suite_add_tcase(s, tc);
 
 	tc = tcase_create("mult_border_cases");
 	tcase_add_test(tc, test_mult_border_cases_secp256k1);
+	tcase_add_test(tc, test_mult_border_cases_secp256k1_h);
 	tcase_add_test(tc, test_mult_border_cases_nist256p1);
 	suite_add_tcase(s, tc);
 
 	tc = tcase_create("scalar_mult");
 	tcase_add_test(tc, test_scalar_mult_secp256k1);
+	tcase_add_test(tc, test_scalar_mult_secp256k1_h);
 	tcase_add_test(tc, test_scalar_mult_nist256p1);
 	suite_add_tcase(s, tc);
 
 	tc = tcase_create("point_mult");
 	tcase_add_test(tc, test_point_mult_secp256k1);
+	tcase_add_test(tc, test_point_mult_secp256k1_h);
 	tcase_add_test(tc, test_point_mult_nist256p1);
 	suite_add_tcase(s, tc);
 
 	tc = tcase_create("scalar_point_mult");
 	tcase_add_test(tc, test_scalar_point_mult_secp256k1);
+	tcase_add_test(tc, test_scalar_point_mult_secp256k1_h);
 	tcase_add_test(tc, test_scalar_point_mult_nist256p1);
 	suite_add_tcase(s, tc);
 

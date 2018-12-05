@@ -55,6 +55,44 @@ const ecdsa_curve secp256k1 = {
 #endif
 };
 
+/** Alternative generator for secp256k1.
+ *  This is the sha256 of 'g' after DER encoding (without compression).
+ *  Used in Pederson commitment.
+ */
+const ecdsa_curve secp256k1_h = {
+	/* .prime */ {
+		/*.val =*/ {0x3ffffc2f, 0x3ffffffb, 0x3fffffff, 0x3fffffff, 0x3fffffff, 0x3fffffff, 0x3fffffff, 0x3fffffff, 0xffff}
+	},
+
+	/* G */ {
+		/*.x =*/{/*.val =*/{0xe803ac0, 0x1effba6b, 0xec96d54, 0x229683ca, 0x297a5e07, 0x2d2d80d7, 0x4954b78, 0x26dd3068, 0x5092}},
+		/*.y =*/{/*.val =*/{0x33a38904, 0xc308c4f, 0x1766968c, 0x36b0a2bc, 0x35f40a36, 0x398df2c6, 0x3926e049, 0x31a18e5c, 0x31d3}}
+	},
+
+	/* order */ {
+		/*.val =*/{0x10364141, 0x3f497a33, 0x348a03bb, 0x2bb739ab, 0x3ffffeba, 0x3fffffff, 0x3fffffff, 0x3fffffff, 0xffff}
+	},
+
+	/* order_half */ {
+		/*.val =*/{0x281b20a0, 0x3fa4bd19, 0x3a4501dd, 0x15db9cd5, 0x3fffff5d, 0x3fffffff, 0x3fffffff, 0x3fffffff, 0x7fff}
+	},
+
+	/* a */	0,
+
+	/* b */ {
+		/*.val =*/{7}
+	}
+#if USE_PRECOMPUTED_CP
+	,
+	/* cp */ {
+#include "secp256k1_h.table"
+	}
+#endif
+
+};
+
+
+
 const curve_info secp256k1_info = {
 	.bip32_name = "Bitcoin seed",
 	.params = &secp256k1,

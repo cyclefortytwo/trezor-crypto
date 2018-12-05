@@ -30,6 +30,7 @@
 #include "bip32.h"
 
 extern const ecdsa_curve secp256k1;
+extern const ecdsa_curve secp256k1_h;
 extern const curve_info secp256k1_info;
 extern const curve_info secp256k1_decred_info;
 extern const curve_info secp256k1_groestl_info;
